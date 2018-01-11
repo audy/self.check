@@ -1,6 +1,6 @@
 # `self.check`
 
-Keep tabs on self.you
+Keep track of self-reported data about yourself.
 
 # How Do?
 
