@@ -1,6 +1,7 @@
 # `self.check`
 
-Keep track of self-reported data about yourself.
+Keep track of self-reported data about yourself. Data are stored locally so you
+don't have to worry about privacy. Track anything you want.
 
 # How Do?
 
@@ -21,5 +22,5 @@ questions = [
 ]
 ```
 
-Then run `./self.check`. Responses go in `responses/` as a timestamped json
-file.
+To take a sample, run `./self.check`. Responses go in `responses/` as a
+timestamped json file.
