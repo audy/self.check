@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 from pprint import pprint
-from questions import questions
 import random
 import datetime
 import json
@@ -10,18 +9,18 @@ import os
 
 def parse_response(type, raw_answer):
 
-    if type == bool:
+    if type == 'bool':
         if raw_answer.startswith('y'):
             return True
         elif raw_answer.startswith('n'):
             return False
         else:
             return None
-    elif type == int:
+    elif type == 'int':
         return int(raw_answer)
-    elif type == float:
+    elif type == 'float':
         return float(raw_answer)
-    elif type == str:
+    elif type == 'str':
         return str(raw_answer)
     else:
         print('I don\'t know how to process answer of type {}'.format(type))
@@ -30,13 +29,13 @@ def parse_response(type, raw_answer):
 
 def query_question(question):
 
-    if question['type'] == bool:
+    if question['type'] == 'bool':
         raw_answer = input('{} [y/n]: '.format(question['prompt']))
-    elif question['type'] == int:
+    elif question['type'] == 'int':
         raw_answer = input('{} [int]: '.format(question['prompt']))
-    elif question['type'] == float:
+    elif question['type'] == 'float':
         raw_answer = input('{} [float]: '.format(question['prompt']))
-    elif question['type'] == str:
+    elif question['type'] == 'str':
         raw_answer = input('{} [str]: '.format(question['prompt']))
     else:
         print('can\'t understand question:')
@@ -66,7 +65,14 @@ def write_responses(responses):
 
 def main():
 
+    config_path = os.path.expanduser('~/.self-check.json')
+
+    with open(config_path) as handle:
+        config = json.loads(handle.read())
+
     responses = {}
+
+    questions = config['questions']
 
     responses['time'] = datetime.datetime.now().timestamp()
     print(responses['time'])
